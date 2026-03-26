@@ -2,6 +2,8 @@
   "name": "pkb-desktop",
   "version": "0.1.0",
   "private": true,
+  "description": "Local-first Windows desktop knowledge base assistant with document import, retrieval, and model-powered QA.",
+  "author": "Sasakur0",
   "main": "dist/electron/main.cjs",
   "scripts": {
     "dev": "concurrently -k \"npm:dev:renderer\" \"npm:dev:main\" \"npm:dev:electron\"",

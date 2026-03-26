@@ -2,7 +2,8 @@
   "appId": "com.local.pkbassistant",
   "productName": "PersonalKnowledgeBaseAssistant",
   "directories": {
-    "output": "dist/installer"
+    "output": "dist/installer",
+    "buildResources": "build"
   },
   "files": [
     "dist/**/*",
@@ -18,6 +19,7 @@
     }
   ],
   "win": {
+    "icon": "build/icon.ico",
     "target": [
       "nsis"
     ]
