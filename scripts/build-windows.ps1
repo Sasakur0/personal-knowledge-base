@@ -1,6 +1,8 @@
 param(
   [switch]$SkipBackend,
-  [switch]$SkipDesktop
+  [switch]$SkipDesktop,
+  [ValidateSet("nsis", "portable", "msi")]
+  [string]$Target = "nsis"
 )
 
 $ErrorActionPreference = "Stop"
@@ -9,7 +11,7 @@ $repoRoot = Split-Path -Parent $PSScriptRoot
 $backendExeOutDir = Join-Path $repoRoot "backend\dist"
 $desktopBackendResourceDir = Join-Path $repoRoot "desktop\resources\backend"
 
-Write-Host "Building Windows installer for PersonalKnowledgeBaseAssistant..."
+Write-Host "Building Windows package for PersonalKnowledgeBaseAssistant ($Target)..."
 
 if (-not $SkipBackend) {
   Write-Host "1/3 Build backend executable with PyInstaller"
@@ -36,12 +38,20 @@ if (-not $SkipDesktop) {
   Push-Location (Join-Path $repoRoot "desktop")
   try {
     npm install
-    Write-Host "3/3 Build renderer/main and package NSIS installer"
-    npm run package:win
+    Write-Host "3/3 Build renderer/main and package Windows target: $Target"
+    if ($Target -eq "nsis") {
+      npm run package:win
+    }
+    elseif ($Target -eq "portable") {
+      npm run package:portable
+    }
+    else {
+      npm run package:msi
+    }
   }
   finally {
     Pop-Location
   }
 }
 
-Write-Host "Windows build finished."
+Write-Host "Windows build finished. Artifacts are in desktop\\dist\\installer"

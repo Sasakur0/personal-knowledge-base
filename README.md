@@ -1,5 +1,7 @@
 # Personal Knowledge Base Assistant
 
+[中文说明](./README.zh-CN.md)
+
 Local-first desktop knowledge base QA app for Windows.
 
 ## Tech Stack
@@ -106,10 +108,23 @@ The script performs:
 1. Build backend executable with PyInstaller (`pkb_backend.exe`)
 2. Copy backend executable to `desktop/resources/backend`
 3. Build Electron renderer/main
-4. Package NSIS installer with electron-builder
+4. Package a Windows target with electron-builder
 
 Installer output:
 - `desktop/dist/installer/`
+
+Available targets:
+- `.\scripts\build-windows.ps1 -Target nsis`
+  - Produces an NSIS installer `.exe`
+- `.\scripts\build-windows.ps1 -Target portable`
+  - Produces a portable `.exe`
+- `.\scripts\build-windows.ps1 -Target msi`
+  - Produces an `.msi` installer
+
+Package scripts:
+- `cd desktop && npm run package:win`
+- `cd desktop && npm run package:portable`
+- `cd desktop && npm run package:msi`
 
 ## Notes and Pitfalls
 - Use `.venv` to avoid polluting Anaconda/base environment.
