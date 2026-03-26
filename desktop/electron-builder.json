@@ -1,0 +1,25 @@
+{
+  "appId": "com.local.pkbassistant",
+  "productName": "PersonalKnowledgeBaseAssistant",
+  "directories": {
+    "output": "dist/installer"
+  },
+  "files": [
+    "dist/**/*",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "resources/backend",
+      "to": "backend",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ],
+  "win": {
+    "target": [
+      "nsis"
+    ]
+  }
+}

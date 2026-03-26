@@ -1,0 +1,33 @@
+﻿# Node
+node_modules/
+*.log
+npm-debug.log*
+
+# Desktop build
+.desktop-cache/
+desktop/dist/
+desktop/.vite/
+desktop/resources/backend/pkb_backend.exe
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Runtime data
+backend/data/sqlite/*.db
+backend/data/sqlite/*.sqlite
+backend/data/faiss/*.index
+backend/data/faiss/*.bin
+backend/build/
+backend/dist/
+backend/*.spec
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
